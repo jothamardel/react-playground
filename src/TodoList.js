@@ -7,7 +7,10 @@ class TodoList extends Component {
         super();
         this.state = {
             newItem: '',
-            todoItems: ['wash', 'cook']
+            todoItems: [
+                {title: 'wash', done: false},
+                {title: 'cook', done: false},
+            ]
         }
     }
 
@@ -20,7 +23,7 @@ class TodoList extends Component {
             return;
         }
         const newArr = [...this.state.todoItems]
-        newArr.push(this.state.newItem);
+        newArr.push({title: this.state.newItem, done: false});
         this.setState({ todoItems: [...newArr], newItem: ''})
     }
 
@@ -41,7 +44,7 @@ class TodoList extends Component {
                 <ul>
                    { 
                         this.state.todoItems?.map((item) => (
-                            <li style={{textDecoration: 'line-through'}}>{item}</li>
+                            <li style={{textDecoration: `${item.done ? 'line-through': ''}`}}>{item.title}</li>
                         ))
                    }
                 </ul>
