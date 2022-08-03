@@ -27,6 +27,10 @@ class TodoList extends Component {
         this.setState({ todoItems: [...newArr], newItem: ''})
     }
 
+    taskIsDone = (params) => {
+        //do something
+    }
+
 
 
     render() {
@@ -44,7 +48,7 @@ class TodoList extends Component {
                 <ul>
                    { 
                         this.state.todoItems?.map((item) => (
-                            <li style={{textDecoration: `${item.done ? 'line-through': ''}`}}>{item.title}</li>
+                            <li onClick={() => this.taskIsDone('')} style={{textDecoration: `${item.done ? 'line-through': ''}`}}>{item.title}</li>
                         ))
                    }
                 </ul>
