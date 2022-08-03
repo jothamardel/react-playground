@@ -17,7 +17,7 @@ class Counter extends Component {
                 <h2>{this.state.value}</h2>
                 <div>
                     <button onClick={() => this.setState({ value: this.state.value + 1})}>increase</button>
-                    <button onClick={() => console.log("Decrease value")}>decrease</button>
+                    <button onClick={() => this.setState({ value: this.state.value - 1})}>decrease</button>
                 </div>
             </div>
         )

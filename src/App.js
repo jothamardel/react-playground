@@ -1,4 +1,5 @@
 import Counter from './Counter';
+import TodoList from './TodoList';
 import './App.css';
 
 function App(props) {
@@ -6,7 +7,7 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <Counter />
+        <TodoList />
       </header>
     </div>
   );
