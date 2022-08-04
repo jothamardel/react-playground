@@ -23,13 +23,20 @@ class TodoList extends Component {
             return;
         }
         const newArr = [...this.state.todoItems]
-        newArr.push({title: this.state.newItem, done: false});
+        newArr.push({ title: this.state.newItem, done: false});
         this.setState({ todoItems: [...newArr], newItem: ''})
     }
 
-    taskIsDone = (title) => {
+    taskIsDone = (index) => {
         //do something
-        console.log(title);
+        console.log(index)
+
+        const data = [...this.state.todoItems]
+        data[index] = {...data[index], done: true}
+        this.setState({ todoItems: data});
+
+
+        // const index = data.findIndex(item => item.title === title)
     }
 
 
@@ -48,10 +55,11 @@ class TodoList extends Component {
 
                 <ul>
                    { 
-                        this.state.todoItems?.map((item) => (
-                            <li onClick={() => this.taskIsDone(item.title)} style={{textDecoration: `${item.done ? 'line-through': ''}`}}>{item.title}</li>
+                        this.state.todoItems?.map((item, index) => (
+                            <li key={index.toString()} onClick={() => this.taskIsDone(index)} style={{textDecoration: item.done ? 'line-through' : '', cursor: 'pointer'}}>{item.title}</li>
                         ))
-                   }
+                       
+                    }
                 </ul>
             </div>
         )
